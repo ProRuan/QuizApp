@@ -11,7 +11,7 @@ let questions = [
         'answer2': 'Das ist Antwort 2.',
         'answer3': 'Das ist Antwort 3.',
         'answer4': 'Das ist Antwort 4.',
-        'answer': 'Das ist die richtige Antwort.'
+        'answer': 3
     },
     {
         'question': 'Frage',
@@ -82,6 +82,18 @@ function showQuestion() {
 }
 
 
-function answer(choice) {
-    //my answer
+// Bitte Funktion kommentieren!!!
+
+function answer(selection) {
+    let question = questions[currentQuestion];
+    console.log('selected answer is', selection);
+    let selectedQuestionNumber = selection.slice(-1);
+    console.log('selectiedQuestionNumber is', selectedQuestionNumber);
+    console.log('Current question is', question['answer']);
+
+    if (selectedQuestionNumber == question['answer']) {
+        console.log('Richtige Antwort!');
+    } else {
+        console.log('Falsche Antwort');
+    }
 }
