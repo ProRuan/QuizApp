@@ -1,5 +1,7 @@
 let currentQuestion = 0;
 let counterRightAnswers = 0;
+let AUDIO_SUCCESS = new Audio('./audio/success.mp3');
+let AUDIO_FAILURE = new Audio('./audio/failure.mp3');
 
 
 // Create your own JSON-Array
@@ -101,6 +103,7 @@ function showQuestion() {
 
 
 // Bitte Funktion kommentieren!!!
+// Bitte Responsive machen --> 100 % des Bildschirms!
 
 function answer(selection) {
     let question = questions[currentQuestion];
@@ -109,10 +112,12 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['answer']) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        AUDIO_SUCCESS.play();
         counterRightAnswers++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAILURE.play();
     }
     document.getElementById('next-button').disabled = false;
 }
