@@ -86,6 +86,7 @@ function showQuestion() {
         document.getElementById('end-screen').style.display = 'unset';
         document.getElementById('question-body').style.display = 'none';
 
+        document.getElementById('header-img').src = './img/question-mark.jpg';
         document.getElementById('right-answers').innerHTML = counterRightAnswers;
         document.getElementById('maximum-answers').innerHTML = questions.length;
     }
