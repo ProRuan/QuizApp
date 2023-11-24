@@ -75,42 +75,30 @@ function init() {
 
 
 function showQuestion() {
-    if (currentQuestion < questions.length) {
-        let percent = (currentQuestion + 1) / questions.length;
-        percent = Math.round(percent * 100);
-        document.getElementById('progress-bar').innerHTML = `${percent} %`;
-        document.getElementById('progress-bar').style.width = `${percent}%`;
-        console.log('Fortschritt:', percent);
-
-        let question = questions[currentQuestion];
-
-        document.getElementById('question').innerHTML = question['question'];
-        document.getElementById('answer1').innerHTML = question['answer1'];
-        document.getElementById('answer2').innerHTML = question['answer2'];
-        document.getElementById('answer3').innerHTML = question['answer3'];
-        document.getElementById('answer4').innerHTML = question['answer4'];
-        document.getElementById('current-question').innerHTML = currentQuestion + 1;
+    if (continueQuiz()) {
+        updateProgressBar();
+        updateToNextQuestion();
     } else {
-        document.getElementById('end-screen').style.display = 'unset';
-        document.getElementById('question-body').style.display = 'none';
-
-        document.getElementById('header-img').src = './img/award.png';
-        document.getElementById('right-answers').innerHTML = counterRightAnswers;
-        document.getElementById('maximum-answers').innerHTML = questions.length;
+        showEndScreen();
     }
+}
 
+
+function continueQuiz() {
+    return currentQuestion < questions.length;
 }
 
 
 // Bitte Funktion kommentieren!!!
-// Bitte Responsive machen --> 100 % des Bildschirms!
+// Bitte Clean Coding umsetzen!!!
+// Bitte Responsive machen --> 100 % des Bildschirms!!!
 
 function answer(selection) {
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer${question['answer']}`;
 
-    if (selectedQuestionNumber == question['answer']) {
+    if (selectedRightAnswer(selectedQuestionNumber, question['answer'])) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         AUDIO_SUCCESS.play();
         counterRightAnswers++;
@@ -123,6 +111,11 @@ function answer(selection) {
 }
 
 
+function selectedRightAnswer(selectedQNr, answer) {
+    return selectedQNr == answer;
+}
+
+
 function nextQuestion() {
     currentQuestion++;
     document.getElementById('next-button').disabled = true;
@@ -132,14 +125,10 @@ function nextQuestion() {
 
 
 function resetAnswerButtons() {
-    document.getElementById('answer1').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer1').parentNode.classList.remove('bg-success');
-    document.getElementById('answer2').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer2').parentNode.classList.remove('bg-success');
-    document.getElementById('answer3').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer3').parentNode.classList.remove('bg-success');
-    document.getElementById('answer4').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer4').parentNode.classList.remove('bg-success');
+    for (let i = 0; i < 4; i++) {
+        document.getElementById(`answer${i+1}`).parentNode.classList.remove('bg-danger');
+        document.getElementById(`answer${i+1}`).parentNode.classList.remove('bg-success');
+    }
 }
 
 
@@ -150,4 +139,32 @@ function restartQuiz() {
     init();
     document.getElementById('end-screen').style.display = 'none';
     document.getElementById('question-body').style.display = 'unset';
+}
+
+
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress-bar').innerHTML = `${percent} %`;
+    document.getElementById('progress-bar').style.width = `${percent}%`;
+}
+
+function updateToNextQuestion() {
+    let question = questions[currentQuestion];
+
+    document.getElementById('question').innerHTML = question['question'];
+    document.getElementById('answer1').innerHTML = question['answer1'];
+    document.getElementById('answer2').innerHTML = question['answer2'];
+    document.getElementById('answer3').innerHTML = question['answer3'];
+    document.getElementById('answer4').innerHTML = question['answer4'];
+    document.getElementById('current-question').innerHTML = currentQuestion + 1;
+}
+
+
+function showEndScreen() {
+    document.getElementById('end-screen').style.display = 'unset';
+    document.getElementById('question-body').style.display = 'none';
+    document.getElementById('header-img').src = './img/award.png';
+    document.getElementById('right-answers').innerHTML = counterRightAnswers;
+    document.getElementById('maximum-answers').innerHTML = questions.length;
 }
