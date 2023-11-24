@@ -26,3 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+.bg-success, .bg-danger {
+    color: white !important;
+}

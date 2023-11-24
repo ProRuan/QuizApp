@@ -93,7 +93,9 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['answer']) {
         console.log('Richtige Antwort!');
+        document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
         console.log('Falsche Antwort');
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
     }
 }
