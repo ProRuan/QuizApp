@@ -74,14 +74,20 @@ function init() {
 
 function showQuestion() {
     if (currentQuestion < questions.length) {
+        let percent = (currentQuestion + 1) / questions.length;
+        percent = Math.round(percent * 100);
+        document.getElementById('progress-bar').innerHTML = `${percent} %`;
+        document.getElementById('progress-bar').style.width = `${percent}%`;
+        console.log('Fortschritt:', percent);
+
         let question = questions[currentQuestion];
 
-    document.getElementById('question').innerHTML = question['question'];
-    document.getElementById('answer1').innerHTML = question['answer1'];
-    document.getElementById('answer2').innerHTML = question['answer2'];
-    document.getElementById('answer3').innerHTML = question['answer3'];
-    document.getElementById('answer4').innerHTML = question['answer4'];
-    document.getElementById('current-question').innerHTML = currentQuestion + 1;
+        document.getElementById('question').innerHTML = question['question'];
+        document.getElementById('answer1').innerHTML = question['answer1'];
+        document.getElementById('answer2').innerHTML = question['answer2'];
+        document.getElementById('answer3').innerHTML = question['answer3'];
+        document.getElementById('answer4').innerHTML = question['answer4'];
+        document.getElementById('current-question').innerHTML = currentQuestion + 1;
     } else {
         document.getElementById('end-screen').style.display = 'unset';
         document.getElementById('question-body').style.display = 'none';
@@ -90,7 +96,7 @@ function showQuestion() {
         document.getElementById('right-answers').innerHTML = counterRightAnswers;
         document.getElementById('maximum-answers').innerHTML = questions.length;
     }
-    
+
 }
 
 
