@@ -26,11 +26,19 @@
     <div class="container">
         <div class="card quiz-card">
             <img src="./img/question-mark.jpg" class="card-img-top" alt="question-mark">
-            
+
             <div id="end-screen" class="card-body" style="display: none;">
-                Quiz beendet!
+                <div class="text-center">
+                    Quiz beendet!
+                    <div>
+                        <img class="width-100" src="./img/award.png" alt="award">
+                    </div>
+                    <span class="text-center">
+                        Du hast <b></b> Fragen von <b></b> Fragen beantwortet.
+                    </span>
+                </div>
             </div>
-            
+
             <div id="question-body" class="card-body">
                 <h5 id="question" class="card-title">Frage</h5>
 
@@ -60,7 +68,8 @@
 
                 <div class="question-footer">
                     <span><b id="current-question">1</b> von <b id="all-questions">5</b> Fragen</span>
-                    <button id="next-button" class="btn btn-primary" disabled onclick="nextQuestion()">Nächste Frage</button>
+                    <button id="next-button" class="btn btn-primary" disabled onclick="nextQuestion()">Nächste
+                        Frage</button>
                 </div>
             </div>
         </div>
