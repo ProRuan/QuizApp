@@ -1,4 +1,5 @@
 let currentQuestion = 0;
+let counterRightAnswers = 0;
 
 
 // Create your own JSON-Array
@@ -84,6 +85,9 @@ function showQuestion() {
     } else {
         document.getElementById('end-screen').style.display = 'unset';
         document.getElementById('question-body').style.display = 'none';
+
+        document.getElementById('right-answers').innerHTML = counterRightAnswers;
+        document.getElementById('maximum-answers').innerHTML = questions.length;
     }
     
 }
@@ -97,8 +101,8 @@ function answer(selection) {
     let idOfRightAnswer = `answer${question['answer']}`;
 
     if (selectedQuestionNumber == question['answer']) {
-        console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        counterRightAnswers++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
