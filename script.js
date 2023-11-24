@@ -82,7 +82,8 @@ function showQuestion() {
     document.getElementById('answer4').innerHTML = question['answer4'];
     document.getElementById('current-question').innerHTML = currentQuestion + 1;
     } else {
-        // show end screen
+        document.getElementById('end-screen').style.display = 'unset';
+        document.getElementById('question-body').style.display = 'none';
     }
     
 }
