@@ -92,7 +92,7 @@ function showQuestion() {
         document.getElementById('end-screen').style.display = 'unset';
         document.getElementById('question-body').style.display = 'none';
 
-        document.getElementById('header-img').src = './img/question-mark.jpg';
+        document.getElementById('header-img').src = './img/award.png';
         document.getElementById('right-answers').innerHTML = counterRightAnswers;
         document.getElementById('maximum-answers').innerHTML = questions.length;
     }
@@ -135,4 +135,14 @@ function resetAnswerButtons() {
     document.getElementById('answer3').parentNode.classList.remove('bg-success');
     document.getElementById('answer4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer4').parentNode.classList.remove('bg-success');
+}
+
+
+function restartQuiz() {
+    document.getElementById('header-img').src = './img/question-mark.jpg';
+    currentQuestion = 0;
+    counterRightAnswers = 0;
+    init();
+    document.getElementById('end-screen').style.display = 'none';
+    document.getElementById('question-body').style.display = 'unset';
 }
