@@ -27,7 +27,7 @@ let questions = [
         'answer2': 'Antwort2',
         'answer3': 'Antwort3',
         'answer4': 'Antwort4',
-        'answer': 'Antwort'
+        'answer': 4
     },
     {
         'question': 'Frage',
@@ -35,7 +35,7 @@ let questions = [
         'answer2': 'Antwort2',
         'answer3': 'Antwort3',
         'answer4': 'Antwort4',
-        'answer': 'Antwort'
+        'answer': 3
     },
     {
         'question': 'Frage',
@@ -43,7 +43,7 @@ let questions = [
         'answer2': 'Antwort2',
         'answer3': 'Antwort3',
         'answer4': 'Antwort4',
-        'answer': 'Antwort'
+        'answer': 1
     },
     {
         'question': 'Frage',
@@ -51,7 +51,7 @@ let questions = [
         'answer2': 'Antwort2',
         'answer3': 'Antwort3',
         'answer4': 'Antwort4',
-        'answer': 'Antwort'
+        'answer': 3
     },
     {
         'question': 'Frage',
@@ -59,7 +59,7 @@ let questions = [
         'answer2': 'Antwort2',
         'answer3': 'Antwort3',
         'answer4': 'Antwort4',
-        'answer': 'Antwort'
+        'answer': 4
     }
 ];
 
@@ -79,6 +79,7 @@ function showQuestion() {
     document.getElementById('answer2').innerHTML = question['answer2'];
     document.getElementById('answer3').innerHTML = question['answer3'];
     document.getElementById('answer4').innerHTML = question['answer4'];
+    document.getElementById('current-question').innerHTML = currentQuestion + 1;
 }
 
 
